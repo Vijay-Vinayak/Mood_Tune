@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Detected Emotion</title>
+</head>
+<body style="text-align:center; font-family:sans-serif;">
+  <h2>Detected Emotion: <span style="color:blue">{{ emotion }}</span></h2>
+  <img src="{{ url_for('static', filename=img) }}" width="300"><br><br>
+
+  <h3>🎧 YouTube Song Recommendation:</h3>
+  {% if song_url %}
+    <a href="{{ song_url }}" target="_blank">Play Song on YouTube</a>
+  {% else %}
+    <p>No song found for this emotion.</p>
+  {% endif %}
+</body>
+</html>

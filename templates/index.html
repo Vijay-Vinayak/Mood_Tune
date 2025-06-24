@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detect Emotion</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #667eea, #764ba2);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+    button {
+      background-color: #ffffff;
+      color: #764ba2;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    button:hover {
+      background-color: #f1f1f1;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h2>😊 Capture Your Mood</h2>
+  <form method="POST" action="/capture">
+    <button type="submit">📸 Detect Emotion Now</button>
+  </form>
+</body>
+</html>
