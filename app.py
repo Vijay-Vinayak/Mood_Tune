@@ -1,10 +1,13 @@
-import cv2
+from flask import Flask, render_template, request
+import threading
+import time
 import os
-from flask import Flask, render_template, request, redirect, url_for
+import cv2
 from utils.emotion_detector import detect_emotion
 
 app = Flask(__name__)
 
+# Emotion → YouTube mapping
 song_map = {
     "Happy": ["https://www.youtube.com/watch?v=y6Sxv-sUYtM"],
     "Sad": ["https://www.youtube.com/watch?v=hLQl3WQQoQ0"],
@@ -36,6 +39,16 @@ def capture():
     song_link = song_map.get(emotion, [""])[0]
 
     return render_template("result.html", emotion=emotion, song_url=song_link, img="captured.jpg")
+
+import signal
+
+@app.route("/shutdown", methods=["POST"])
+def shutdown():
+    print(">>> Shutdown requested")
+    pid = os.getpid()
+    threading.Thread(target=lambda: os.kill(pid, signal.SIGTERM)).start()
+    return "✅ Shutting down server now..."
+
 
 if __name__ == "__main__":
     app.run(debug=True, use_reloader=False)
